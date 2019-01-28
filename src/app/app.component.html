@@ -1,0 +1,86 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center; line-height:50px">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <h2>by Ted Nanney</h2>
+  <h2>  </h2>
+</div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend" id="button-addon3">
+      <button class="btn btn-outline-secondary" (click)="loadData()" type="button">Load Data</button>
+      <button class="btn btn-outline-secondary" (click)="findItemsByString(searchString)" type="button">Search</button>
+    </div>
+    <input type="text" [(ngModel)]="searchString" class="form-control" placeholder="" id="searchBox" aria-describedby="button-addon3">
+  </div>
+<table cdk-table [dataSource]="tableDataSource" class="table table-striped">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Item ID Column -->
+  <ng-container cdkColumnDef="id">
+    <th cdk-header-cell *cdkHeaderCellDef> Item ID </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container cdkColumnDef="description">
+    <th cdk-header-cell *cdkHeaderCellDef> Description </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Last Sold Column -->
+  <ng-container cdkColumnDef="lastSold">
+    <th cdk-header-cell *cdkHeaderCellDef> Last Sold </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.lastSold}} </td>
+  </ng-container>
+
+  <!-- Shelf Life Column -->
+  <ng-container cdkColumnDef="shelfLife">
+    <th cdk-header-cell *cdkHeaderCellDef> Shelf Life </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.shelfLife}} </td>
+  </ng-container>
+
+    <!-- Department Column -->
+  <ng-container cdkColumnDef="department">
+    <th cdk-header-cell *cdkHeaderCellDef> Department </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.department}} </td>
+  </ng-container>
+
+    <!-- PriceColumn -->
+  <ng-container cdkColumnDef="price">
+    <th cdk-header-cell *cdkHeaderCellDef> Price </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+    <!-- Unit Column -->
+  <ng-container cdkColumnDef="unit">
+    <th cdk-header-cell *cdkHeaderCellDef> Unit </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.unit}} </td>
+  </ng-container>
+
+    <!-- xFor Column -->
+  <ng-container cdkColumnDef="xfor">
+    <th cdk-header-cell *cdkHeaderCellDef> xFor </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.xfor}} </td>
+  </ng-container>
+
+    <!-- Cost Column -->
+  <ng-container cdkColumnDef="cost">
+    <th cdk-header-cell *cdkHeaderCellDef> Cost </th>
+    <td cdk-cell *cdkCellDef="let element"> {{element.cost}} </td>
+  </ng-container>
+
+    <!-- Delete Column -->
+  <ng-container cdkColumnDef="delete">
+      <th cdk-header-cell *cdkHeaderCellDef> Delete </th>
+      <td cdk-cell *cdkCellDef="let element">
+        <button class="btn btn-danger" (click)="deleteItem(element.id)"> Delete </button>
+      </td>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="displayedColumns.value"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: displayedColumns.value;"></tr>
+</table>
