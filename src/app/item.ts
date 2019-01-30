@@ -1,11 +1,11 @@
 export interface IItem {
-    itemId: string;
+    id: string;
     description: string;
     lastSold: string;
     shelfLife: string;
     department: string;
     price: string;
     unit: string;
-    xFor: string;
+    xfor: string;
     cost: string;
 }

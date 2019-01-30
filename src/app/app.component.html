@@ -9,8 +9,9 @@
 
 <div class="input-group mb-3">
     <div class="input-group-prepend" id="button-addon3">
-      <button class="btn btn-outline-secondary" (click)="loadData()" type="button">Load Data</button>
-      <button class="btn btn-outline-secondary" (click)="findItemsByString(searchString)" type="button">Search</button>
+      <button class="btn btn-success" (click)="loadData()" type="button">Load Data</button>
+      <button class="btn btn-success" (click)="open(content)">Create Item</button>
+      <button class="btn btn-primary" (click)="findItemsByString(searchString)" type="button">Search</button>
     </div>
     <input type="text" [(ngModel)]="searchString" class="form-control" placeholder="" id="searchBox" aria-describedby="button-addon3">
   </div>
@@ -84,3 +85,27 @@
   <tr cdk-header-row *cdkHeaderRowDef="displayedColumns.value"></tr>
   <tr cdk-row *cdkRowDef="let row; columns: displayedColumns.value;"></tr>
 </table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Create Item</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        ID: <input type="text" [(ngModel)]="addItemId" class="form-control" value="753542" id="addItemId" aria-describedby="button-addon3">
+        Description: <input type="text" [(ngModel)]="addItemDescription" class="form-control" value="banana" id="addItemDescription" aria-describedby="button-addon3">
+        Last Sold: <input type="text" [(ngModel)]="addItemLastSold" class="form-control" value="9/5/2017" id="addItemLastSold" aria-describedby="button-addon3">
+        Shelf Life: <input type="text" [(ngModel)]="addItemShelfLife" class="form-control" value="4d" id="addItemShelfLife" aria-describedby="button-addon3">
+        Department: <input type="text" [(ngModel)]="addItemDepartment" class="form-control" value="Produce" id="addItemDepartment" aria-describedby="button-addon3">
+        Price: <input type="text" [(ngModel)]="addItemPrice" class="form-control" value="$2.99" id="addItemPrice" aria-describedby="button-addon3">
+        Unit: <input type="text" [(ngModel)]="addItemUnit" class="form-control" value="lb" id="addItemUnit" aria-describedby="button-addon3">
+        xFor: <input type="text" [(ngModel)]="addItemXFor" class="form-control" value="1" id="addItemXFor" aria-describedby="button-addon3">
+        Cost: <input type="text" [(ngModel)]="addItemCost" class="form-control" value="$0.44" id="addItemCost" aria-describedby="button-addon3">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="createItem(addItemId, addItemDescription, addItemLastSold, addItemShelfLife, addItemDepartment, addItemPrice, addItemUnit, addItemXFor, addItemCost)">Save</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    </div>
+  </ng-template>

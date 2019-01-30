@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from './item.service'
 import { BehaviorSubject } from 'rxjs';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { IItem } from './item';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  public errorMsg;
+  public errorMsg
 
   //hard code first item
   items = new BehaviorSubject<{[name:string]: any}>({
@@ -26,11 +28,17 @@ export class AppComponent implements OnInit {
       cost: '$0.44'
     }
 
-  });
+  })
 
-  tableDataSource = new BehaviorSubject<any[]>([]);
+  tableDataSource = new BehaviorSubject<any[]>([])
 
-  constructor(private itemService: ItemService) {}
+  closeResult: string
+
+  responseCode: string
+
+  item:IItem[]
+
+  constructor(private itemService: ItemService, private modalService: NgbModal) {}
 
   title = 'HEB Developer II Programming Challenge';
   displayedColumns = new BehaviorSubject<string[]>(['id', 'description', 'lastSold', 'shelfLife',
@@ -70,4 +78,15 @@ export class AppComponent implements OnInit {
     .subscribe(data => this.items.next(data),
     error => this.errorMsg = error)
   }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+  }
+
+  createItem(addItemId:string, addItemDescription:string, addItemLastSold:string, addItemShelfLife:string, 
+    addItemDepartment:string, addItemPrice:string, addItemUnit:string, addItemXFor:string, addItemCost:string) {
+      this.itemService.createItem(addItemId, addItemDescription, addItemLastSold, addItemShelfLife,
+        addItemDepartment, addItemPrice, addItemUnit, addItemXFor, addItemCost)
+        .subscribe(data => this.item = data, error => this.errorMsg = error)
+    }
 }
