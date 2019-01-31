@@ -6,6 +6,7 @@
   <h2>by Ted Nanney</h2>
   <h2>  </h2>
 </div>
+<input type="file" (change)="fileChange($event)" name="file" />
 
 <div class="input-group mb-3">
     <div class="input-group-prepend" id="button-addon3">
@@ -16,9 +17,6 @@
     <input type="text" [(ngModel)]="searchString" class="form-control" placeholder="" id="searchBox" aria-describedby="button-addon3">
   </div>
 <table cdk-table [dataSource]="tableDataSource" class="table table-striped">
-
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Item ID Column -->
   <ng-container cdkColumnDef="id">

@@ -21,6 +21,7 @@ export class ItemService {
   findItemsUrl = 'http://localhost:8080/hebdev2/services/v1/Items/FindItemsByString/'
   deleteItemUrl = 'http://localhost:8080/hebdev2/services/v1/Items/DeleteItem/'
   addItemUrl = 'http://localhost:8080/hebdev2/services/v1/Items/CreateItem/'
+  createItemsFromFileUrl = 'http://localhost:8080/hebdev2/services/v1/Items/CreateItemsFromFile/'
 
   constructor(private http:HttpClient) {
   }
@@ -62,5 +63,10 @@ export class ItemService {
     return this.http.post<IItem[]>(this.addItemUrl, item, httpOptions)
     .catch(this.errorHandler)
 
+    }
+
+    createItemsFromFile(file:File){
+      return this.http.post(this.createItemsFromFileUrl, file, httpOptions)
+      .catch(this.errorHandler)
     }
 }

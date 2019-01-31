@@ -88,5 +88,15 @@ export class AppComponent implements OnInit {
       this.itemService.createItem(addItemId, addItemDescription, addItemLastSold, addItemShelfLife,
         addItemDepartment, addItemPrice, addItemUnit, addItemXFor, addItemCost)
         .subscribe(data => this.item = data, error => this.errorMsg = error)
+  }
+
+  fileChange(event): void {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+        const file = fileList[0];
+        this.itemService.createItemsFromFile(file)
+        .subscribe(data => this.items.next(data),
+               error => this.errorMsg = error)
     }
+}
 }
