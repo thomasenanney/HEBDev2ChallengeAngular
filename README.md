@@ -4,15 +4,15 @@ This project was created to satisfy the coding challenge issued by HEB for the D
 the solution which requires the ability to search a database of grocery items. 
 
 ## Current DB API operations supported:
-Get all Items
-Create Item
-Upload CSV of Items
-Delete Item
-Search by string
+*Get all Items
+*Create Item
+*Upload CSV of Items
+*Delete Item
+*Search by string
 
 ## Future DB API operations planned:
-Update Item
-Delete all Items
+*Update Item
+*Delete all Items
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
 
