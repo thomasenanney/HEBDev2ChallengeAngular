@@ -3,8 +3,6 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <h2>by Ted Nanney</h2>
-  <h2>  </h2>
 </div>
 <input type="file" (change)="fileChange($event)" name="file" />
 
@@ -14,7 +12,7 @@
       <button class="btn btn-success" (click)="open(content)">Create Item</button>
       <button class="btn btn-primary" (click)="findItemsByString(searchString)" type="button">Search</button>
     </div>
-    <input type="text" [(ngModel)]="searchString" class="form-control" placeholder="" id="searchBox" aria-describedby="button-addon3">
+    <input type="text" (keydown.enter)="findItemsByString(searchString)" (keyup)="findItemsByString(searchString)" [(ngModel)]="searchString" class="form-control" placeholder="" id="searchBox" aria-describedby="button-addon3">
   </div>
 <table cdk-table [dataSource]="tableDataSource" class="table table-striped">
 
@@ -107,3 +105,8 @@
       <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
     </div>
   </ng-template>
+  <footer>
+    <p>Created by: Ted Nanney</p>
+    <p>Contact information: <a href="mailto:thomasenanney@gmail.com">
+    thomasenanney@gmail.com</a>.</p>
+  </footer>

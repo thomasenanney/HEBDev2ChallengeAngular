@@ -33,7 +33,8 @@ export class ItemService {
 
   //use string to search and only return items with fields matching substring
   findItemsByString(string: String): Observable<IItem[]> {
-    return this.http.get<IItem[]>(this.findItemsUrl+string)   
+    
+    return this.http.post<IItem[]>(this.findItemsUrl, string, httpOptions)   
   }
 
   errorHandler(error: HttpErrorResponse){

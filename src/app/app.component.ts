@@ -15,20 +15,7 @@ export class AppComponent implements OnInit {
   public errorMsg
 
   //hard code first item
-  items = new BehaviorSubject<{[name:string]: any}>({
-    'Item 1' : {
-      id: '743542',
-      description: 'banana',
-      lastSold: '9/5/2017',
-      shelfLife: '4d',
-      department: 'Produce',
-      price: '$2.99',
-      unit: 'lb',
-      xfor: '1',
-      cost: '$0.44'
-    }
-
-  })
+  items = new BehaviorSubject<{[name:string]: any}>({})
 
   tableDataSource = new BehaviorSubject<any[]>([])
 
